@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String EXTRA_PLAYER_NAME = "extra.PLAYER_NAME";
-    public static final int REQUEST_CODE_EXAMPLE = 1;
+    public static final int REQUEST_CODE = 1;
 
     private EditText editPlayerName;
     private Button btnStart;
@@ -44,7 +44,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         }
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra(EXTRA_PLAYER_NAME, playerName);
-        startActivityForResult(intent, REQUEST_CODE_EXAMPLE);
+        startActivityForResult(intent, REQUEST_CODE);
 
     }
 
@@ -52,7 +52,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (REQUEST_CODE_EXAMPLE == requestCode) {
+        if (REQUEST_CODE == requestCode) {
             if (resultCode == Activity.RESULT_CANCELED) {
                 if (data.getBooleanExtra(MainActivity.EXTRA_RESULT, false)) {
                     tvTitle.setText("Bạn thắng");
