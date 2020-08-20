@@ -53,7 +53,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
 
         if (REQUEST_CODE == requestCode) {
-            if (resultCode == Activity.RESULT_CANCELED) {
+            if (resultCode == Activity.RESULT_OK) {
                 if (data.getBooleanExtra(MainActivity.EXTRA_RESULT, false)) {
                     tvTitle.setText("Bạn thắng");
                 } else {

@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static final String EXTRA_RESULT = "extra.RESULT";
     private static final int[] idArray = {R.id.tv_box_1, R.id.tv_box_2, R.id.tv_box_3, R.id.tv_box_4, R.id.tv_box_5, R.id.tv_box_6, R.id.tv_box_7, R.id.tv_box_8, R.id.tv_box_9};
-    private Button[] buttons = new Button[9];
+    private Button[] buttons = new Button[idArray.length];
     private Button button;
     private TextView tvNamePlayer;
     private TextView tvTimes;
@@ -47,12 +47,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         button = findViewById(view.getId());
-        if (button.getTag() == null && time > 0) {
+        if (time > 0) {
             Random random = new Random();
             int num = random.nextInt(11);
             button.setBackgroundColor(Color.parseColor("#00B10E"));
             button.setText(Integer.toString(num));
-            button.setTag("1");
             rs += num;
             time--;
             setTimes();
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             Intent intent = new Intent(this, MenuActivity.class);
             intent.putExtra(EXTRA_RESULT, youWin());
-            setResult(Activity.RESULT_CANCELED, intent);
+            setResult(Activity.RESULT_OK, intent);
             finish();
         }
 
