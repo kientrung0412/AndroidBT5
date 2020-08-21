@@ -48,18 +48,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         button = findViewById(view.getId());
         if (time > 0) {
-            Random random = new Random();
-            int num = random.nextInt(11);
-            button.setBackgroundColor(Color.parseColor("#00B10E"));
-            button.setText(Integer.toString(num));
-            rs += num;
-            time--;
-            setTimes();
-            if (time == 0) {
-                if (youWin()) {
-                    Toast.makeText(this, "Bạn thắng", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(this, "Bạn thua", Toast.LENGTH_LONG).show();
+            if (button.getText().toString().isEmpty()) {
+                Random random = new Random();
+                int num = random.nextInt(11);
+                button.setBackgroundColor(Color.parseColor("#00B10E"));
+                button.setText(Integer.toString(num));
+                rs += num;
+                time--;
+                setTimes();
+                if (time == 0) {
+                    if (youWin()) {
+                        Toast.makeText(this, "Bạn thắng", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(this, "Bạn thua", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         }
